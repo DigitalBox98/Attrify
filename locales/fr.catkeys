@@ -1,0 +1,47 @@
+1	French	application/x-vnd.haikuinsider-attrify	1497198575
+Open…	Attrify		Ouvrir…
+Not available	AttributeControl		Non disponible
+false	Attribute		faux
+Error	Attrify		Erreur
+File	Attrify		Fichier
+Configure super mime…	Attrify		Configurer mime maître…
+[RAW data: %zu bytes]	Attribute		[Données brutes: %zu octets]
+Cannot write attributes: file access failed	Attrify		Ecriture d'attributs impossible : échec d'accès au fichier
+Attrify	System name		Attrify
+String	Attribute		String
+Unknown	Attribute		Inconnu
+Int16	Attribute		Int16
+Int8	Attribute		Int8
+Attrify - 	Attrify		Attrify - 
+Close	Attrify		Fermer
+Int64	Attribute		Int64
+Save as…	Attrify		Sauvegarder sous…
+The file has been modified. Save changes before creating a new file?	Attrify		Le fichier a été modifié. Sauvegarder avec de créer un nouveau fichier ?
+Edit	Attrify		Editer
+Cancel	Attrify		Annuler
+Close others	Attrify		Fermer les autres
+Attrify	Attrify		Attrify
+MIME String	Attribute		MIME String
+Don't save	Attrify		Ne pas sauvegarder
+The file has been modified. Save changes?	Attrify		Le fichier a été modifié. Sauvegarder les changements ?
+Cannot create file.	Attrify		Impossible de créer le fichier.
+Float	Attribute		Float
+[Unknown type]	Attribute		[Type inconnu]
+Show link	Attrify		Afficher le fichier lié
+Save	Attrify		Sauvegarder
+Int32	Attribute		Int32
+true	Attribute		vrai
+Configure mime attributes…	Attrify		Configurer les attributes mime…
+New	Attrify		Nouveau
+Cannot open target file.	Attrify		Impossible d'ouvrir le fichier cible.
+Cannot open file for reading attributes.	Attrify		Impossible d'ouvrir le fichier pour lire les attributs.
+Save changes?	Attrify		Sauvegarder les modifications?
+Double	Attribute		Double
+Boolean	Attribute		Boolean
+Quit	Attrify		Quitter
+Time	Attribute		Time
+Launching the FileTypes preflet to configure attributes has failed.\n\nError: 	Attrify		Le lancement de FileTypes pour configurer les attributs a échoué.\n\nErreur: 
+OK	Attrify		OK
+Raw	Attribute		Raw
+About	Attrify		A propos
+Attrify - New Person	Attrify		Attrify - Nouvelle Personne
