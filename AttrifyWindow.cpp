@@ -443,8 +443,16 @@ AttrifyWindow::ShowAbout()
 		NULL
 	};
 
+	const char* thanks[] = {
+		"ZuMi for the Icon",
+		NULL
+	};
+
 	aboutwindow->AddCopyright(2025, "Haiku Insider");
 	aboutwindow->AddAuthors(authors);
+	aboutwindow->AddSpecialThanks(thanks);
+
+	aboutwindow->ResizeTo(400, 320);
 
 	aboutwindow->Show();
 }	
