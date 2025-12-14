@@ -8,7 +8,7 @@ A powerful attribute editor for Haiku operating system.
 - Create new files with predefined attributes
 - Multi-window support
 - Drag & drop support
-- Internationalization (EN/FR)
+- Internationalization
 
 ## Building
 ```bash
