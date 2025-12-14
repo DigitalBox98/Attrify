@@ -65,7 +65,11 @@ private:
 	BFilePanel* fOpenPanel;
 	BFilePanel* fSavePanel;
 	
+#if B_HAIKU_VERSION <= B_HAIKU_VERSION_1_BETA_5
 	BObjectList<Attribute> fAttributes;
+#else
+	BObjectList<Attribute, true> fAttributes;
+#endif
 	BString fMimeType;
 };
 

@@ -21,7 +21,6 @@ public:
 
 private:
 	void OpenFile(const entry_ref& ref);
-//	void CloseAllWindows();
 };
 
 #endif // ATTRIFYAPP_H

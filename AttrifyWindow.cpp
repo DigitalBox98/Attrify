@@ -45,7 +45,11 @@ AttrifyWindow::AttrifyWindow()
 	, fAttributeView(NULL)
 	, fOpenPanel(NULL)
 	, fSavePanel(NULL)
+#if B_HAIKU_VERSION <= B_HAIKU_VERSION_1_BETA_5
 	, fAttributes(20, true)
+#else
+	, fAttributes(20)
+#endif
 {
 	BuildMenu();
 	
