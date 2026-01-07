@@ -5,7 +5,7 @@
 ## architecture of Haiku.
 
 # The name of the binary.
-NAME = Attrify
+NAME = ../Attrify
 
 # The type of binary, must be one of:
 #	APP:	Application
@@ -41,7 +41,7 @@ RDEFS = Attrify.rdef
 
 #	Specify the resource files to use. Full or relative paths can be used.
 #	Both RDEFS and RSRCS can be utilized in the same Makefile.
-RSRCS = 
+# RSRCS = 
 
 # End Pe/Eddie support.
 # @<-src@ 

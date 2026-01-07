@@ -720,9 +720,6 @@ void AttrifyWindow::BuildAttributeView()
 	BGridLayout* grid = dynamic_cast<BGridLayout*>(fAttributeView->GetLayout());
 	if (!grid)
 		return;
-	
-	// Use preferred height instead of fixed small height
-	const float spacing = be_control_look->DefaultItemSpacing();
 		
 	// Add controls
 	for (int32 i = 0; i < fAttributes.CountItems(); i++) {
