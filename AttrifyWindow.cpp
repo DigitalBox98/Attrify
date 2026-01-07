@@ -58,6 +58,7 @@ AttrifyWindow::AttrifyWindow()
 	
 	fPictureView = new PictureView();
 	fPictureView->SetMimeType(fMimeType);
+	fPictureView->SetViewUIColor(B_PANEL_BACKGROUND_COLOR, B_DARKEN_1_TINT);
 	
 	// Add BEOS:TYPE attribute first
 	Attribute* typeAttr = new Attribute("BEOS:TYPE", B_MIME_STRING_TYPE);
@@ -68,7 +69,6 @@ AttrifyWindow::AttrifyWindow()
 	LoadGenericMimeAttributes();
 	
 	fAttributeView = new BView("AttributeView", B_WILL_DRAW);
-	fAttributeView->SetViewColor(ui_color(B_PANEL_BACKGROUND_COLOR));
 
 	// Create a ScrollView for attributes
 	BScrollView* scrollView = new BScrollView("ScrollView", fAttributeView, 
@@ -78,8 +78,6 @@ AttrifyWindow::AttrifyWindow()
 	scrollView->SetExplicitMinSize(BSize(B_SIZE_UNSET, 100));  // Min height 100px
 	scrollView->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNLIMITED));  // No max limit
 
-	//scrollView->SetExplicitMinSize(BSize(scrollView->MinSize().width, 0));
-	
 	BGridLayout* grid = new BGridLayout();
 	float spacing = be_control_look->DefaultItemSpacing();
 	grid->SetInsets(spacing, spacing, spacing, spacing);
@@ -89,13 +87,12 @@ AttrifyWindow::AttrifyWindow()
 
 	// Create a view for the banner + icon
 	BView* leftPanel = new BView("LeftPanel", B_WILL_DRAW);
-	leftPanel->SetViewColor(tint_color(ui_color(B_PANEL_BACKGROUND_COLOR), B_DARKEN_1_TINT));
+	leftPanel->SetViewUIColor(B_PANEL_BACKGROUND_COLOR, B_DARKEN_1_TINT);
 
 	leftPanel->SetExplicitMinSize(BSize(100, B_SIZE_UNSET));
 	leftPanel->SetExplicitMaxSize(BSize(100, B_SIZE_UNSET));
 
 	BGroupLayout* leftLayout = new BGroupLayout(B_VERTICAL);
-	//leftLayout->SetInsets(spacing, spacing, 0, 0);
 	leftPanel->SetLayout(leftLayout);
 	leftPanel->AddChild(fPictureView);
 	
@@ -723,29 +720,26 @@ void AttrifyWindow::BuildAttributeView()
 	BGridLayout* grid = dynamic_cast<BGridLayout*>(fAttributeView->GetLayout());
 	if (!grid)
 		return;
-
-	const float rowHeight = 20.0f;  // Fixed height per row
+	
+	// Use preferred height instead of fixed small height
+	const float spacing = be_control_look->DefaultItemSpacing();
 		
 	// Add controls
 	for (int32 i = 0; i < fAttributes.CountItems(); i++) {
 		Attribute* attr = fAttributes.ItemAt(i);
 		
 		BString labelText = attr->Name();
-		labelText << ":"; // (" << Attribute::TypeCodeToName(attr->Type()) << "):";
+		labelText << ":";
 		
 		AttributeControl* control = AttributeControl::Create(attr);
 		control->SetTarget(this);
 		
-		// Set fixed height for the control
-		control->SetExplicitMinSize(BSize(B_SIZE_UNSET, rowHeight));
-		control->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, rowHeight));
+		// Let the control use its preferred height
+		// Don't force a fixed height that's too small
 		
 		BStringView* label = new BStringView("label", labelText.String());
-		label->SetExplicitMinSize(BSize(B_SIZE_UNSET, rowHeight));
-		label->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, rowHeight));
-		// Center the label text vertically
+		// Center the label text vertically with the control
 		label->SetExplicitAlignment(BAlignment(B_ALIGN_LEFT, B_ALIGN_VERTICAL_CENTER));
-		
 		
 		grid->AddView(label, 0, i);
 		grid->AddView(control, 1, i);
@@ -754,14 +748,13 @@ void AttrifyWindow::BuildAttributeView()
 	grid->SetColumnWeight(0, 0);
 	grid->SetColumnWeight(1, 1);
 	
-	
 	// ADD A GLUE AT THE BOTTOM to push everything up
 	int32 lastRow = fAttributes.CountItems();
 	BView* glue = new BView("glue", 0);
 	glue->SetExplicitMinSize(BSize(0, 0));
 	glue->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNLIMITED));
-	grid->AddView(glue, 0, lastRow, 2, 1);  // Span 2 columns
-	grid->SetRowWeight(lastRow, 1.0f);  // Give all weight to the glue
+	grid->AddView(glue, 0, lastRow, 2, 1);
+	grid->SetRowWeight(lastRow, 1.0f);
 	
 	grid->SetColumnWeight(0, 0);
 	grid->SetColumnWeight(1, 1);	

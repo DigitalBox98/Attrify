@@ -17,7 +17,7 @@ Close	Attrify		Fermer
 Int64	Attribute		Int64
 Save as…	Attrify		Sauvegarder sous…
 The file has been modified. Save changes before creating a new file?	Attrify		Le fichier a été modifié. Sauvegarder avec de créer un nouveau fichier ?
-Edit	Attrify		Editer
+Edit	Attrify		Éditer
 Cancel	Attrify		Annuler
 Close others	Attrify		Fermer les autres
 Attrify	Attrify		Attrify
@@ -43,5 +43,5 @@ Time	Attribute		Time
 Launching the FileTypes preflet to configure attributes has failed.\n\nError: 	Attrify		Le lancement de FileTypes pour configurer les attributs a échoué.\n\nErreur: 
 OK	Attrify		OK
 Raw	Attribute		Raw
-About	Attrify		A propos
+About	Attrify		À propos
 Attrify - New Person	Attrify		Attrify - Nouvelle Personne

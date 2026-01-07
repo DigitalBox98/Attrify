@@ -23,9 +23,10 @@ public:
 	
 	virtual void AttachedToWindow();
 	virtual void MessageReceived(BMessage* message);
-	
+
 	// Factory to create the right type of control
 	static AttributeControl* Create(Attribute* attribute);
+
 
 private:
 	Attribute* fAttribute;

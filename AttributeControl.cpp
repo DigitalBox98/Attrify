@@ -114,6 +114,7 @@ void AttributeControl::MessageReceived(BMessage* message)
 	}
 }
 
+
 AttributeControl* AttributeControl::Create(Attribute* attribute)
 {
 	if (!attribute)
