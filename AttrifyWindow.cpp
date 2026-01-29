@@ -174,7 +174,7 @@ bool AttrifyWindow::QuitRequested()
 			B_TRANSLATE("The file has been modified. Save changes?"),
 			B_TRANSLATE("Cancel"), B_TRANSLATE("Don't save"), 
 			B_TRANSLATE("Save"));
-		
+
 		int32 result = alert->Go();
 		if (result == 0)
 			return false;
@@ -182,12 +182,20 @@ bool AttrifyWindow::QuitRequested()
 			SaveFile();
 	}
 
-	// If Last window, close the application
-	if (be_app->CountWindows() == 1) {
+	// Count only AttrifyWindow instances (exclude BFilePanel windows)
+	int32 attrifyWindowCount = 0;
+	for (int32 i = 0; i < be_app->CountWindows(); i++) {
+		BWindow* window = be_app->WindowAt(i);
+		if (dynamic_cast<AttrifyWindow*>(window) != NULL) {
+			attrifyWindowCount++;
+		}
+	}
+
+	// If this is the last AttrifyWindow, quit the application
+	if (attrifyWindowCount == 1) {
 		be_app->PostMessage(B_QUIT_REQUESTED);
 	}
 	
-	// Only close this window, not the entire application
 	return true;
 }
 

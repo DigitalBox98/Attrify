@@ -71,24 +71,34 @@ void AttrifyApp::OpenFile(const entry_ref& ref)
 
 bool AttrifyApp::QuitRequested()
 {
-	// Close all windows gracefully
+	// First pass: ask all windows if they can quit
 	for (int32 i = CountWindows() - 1; i >= 0; i--) {
 		BWindow* window = WindowAt(i);
-		if (window) {
-			// Lock window to safely check if it can quit
-			if (window->Lock()) {
-				// Ask if window can close (important for unsaved changes)
-				if (!window->QuitRequested()) {
-					window->Unlock();
-					return false;  // User canceled quit
-				}
-				// Close the window
-				window->Quit();
+		if (window && window->Lock()) {
+			// Skip file panel windows (they're not AttrifyWindow)
+			if (dynamic_cast<AttrifyWindow*>(window) == NULL) {
+				window->Unlock();
+				continue;
 			}
+
+			if (!window->QuitRequested()) {
+				window->Unlock();
+				return false;  // User canceled quit
+			}
+			window->Unlock();
 		}
 	}
-	
-	return true;  // All windows closed, app can quit
+
+	// Second pass: actually quit all windows
+	// Start from 0 and always quit WindowAt(0) to avoid index issues
+	while (CountWindows() > 0) {
+		BWindow* window = WindowAt(0);
+		if (window && window->Lock()) {
+			window->Quit();
+		}
+	}
+
+	return true;
 }
 
 int main()
